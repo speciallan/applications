@@ -11,8 +11,8 @@ from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import PDFPageAggregator
 from pdfminer.layout import LAParams, LTTextBox, LTTextLine
 
-from wand.image import Image
-from wand.color import Color
+# from wand.image import Image
+# from wand.color import Color
 import io
 
 
@@ -22,6 +22,11 @@ def main():
     temp_path = './temp'
     result_path = './results'
     result_filename = './result.xlsx'
+
+    if not os.path.exists(temp_path):
+        os.mkdir(temp_path)
+    if not os.path.exists(result_path):
+        os.mkdir(result_path)
 
     # 每个人的发票处理
     write_list = []
@@ -79,7 +84,7 @@ def main():
 
         # 保存图片
         print(filename_list)
-        save_pic(filename_list)
+        # save_pic(filename_list)
 
     write_excel(result_filename, write_list)
 
